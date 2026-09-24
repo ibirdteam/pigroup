@@ -1,0 +1,264 @@
+Uri: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\ajax\libs\font-awesome\6.5.0\css\all.min.css
+Content Type: text/css
+
+Uri: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/webfonts/fa-brands-400.ttf
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\ajax\libs\font-awesome\6.5.0\webfonts\fa-brands-400.ttf
+Content Type: application/octet-stream
+
+Uri: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/webfonts/fa-brands-400.woff2
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\ajax\libs\font-awesome\6.5.0\webfonts\fa-brands-400.woff2
+Content Type: application/octet-stream
+
+Uri: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/webfonts/fa-regular-400.ttf
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\ajax\libs\font-awesome\6.5.0\webfonts\fa-regular-400.ttf
+Content Type: application/octet-stream
+
+Uri: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/webfonts/fa-regular-400.woff2
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\ajax\libs\font-awesome\6.5.0\webfonts\fa-regular-400.woff2
+Content Type: application/octet-stream
+
+Uri: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/webfonts/fa-solid-900.ttf
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\ajax\libs\font-awesome\6.5.0\webfonts\fa-solid-900.ttf
+Content Type: application/octet-stream
+
+Uri: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/webfonts/fa-solid-900.woff2
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\ajax\libs\font-awesome\6.5.0\webfonts\fa-solid-900.woff2
+Content Type: application/octet-stream
+
+Uri: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/webfonts/fa-v4compatibility.ttf
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\ajax\libs\font-awesome\6.5.0\webfonts\fa-v4compatibility.ttf
+Content Type: application/octet-stream
+
+Uri: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/webfonts/fa-v4compatibility.woff2
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\ajax\libs\font-awesome\6.5.0\webfonts\fa-v4compatibility.woff2
+Content Type: application/octet-stream
+
+Uri: https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\css2
+Content Type: text/css
+
+Uri: https://fonts.gstatic.com/s/roboto/v51/KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWubEbWmT.ttf
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\s\roboto\v51\KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWubEbWmT.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/roboto/v51/KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWuYjammT.ttf
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\s\roboto\v51\KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWuYjammT.ttf
+Content Type: font/ttf
+
+Uri: https://payid.vercel.app/images/apps.png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\apps.png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/appstorebadge.png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\appstorebadge.png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/binance.jpg
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\binance.jpg
+Content Type: image/jpeg
+
+Uri: https://payid.vercel.app/images/bitget.jpg
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\bitget.jpg
+Content Type: image/jpeg
+
+Uri: https://payid.vercel.app/images/bk.jpg
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\bk.jpg
+Content Type: image/jpeg
+
+Uri: https://payid.vercel.app/images/block.jpg
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\block.jpg
+Content Type: image/jpeg
+
+Uri: https://payid.vercel.app/images/brain.jpg
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\brain.jpg
+Content Type: image/jpeg
+
+Uri: https://payid.vercel.app/images/bridge.png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\bridge.png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/category.png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\category.png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/chats.jpg
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\chats.jpg
+Content Type: image/jpeg
+
+Uri: https://payid.vercel.app/images/coinphone.png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\coinphone.png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/compass.png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\compass.png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/crypto (1).png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\crypto (1).png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/develop.jpg
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\develop.jpg
+Content Type: image/jpeg
+
+Uri: https://payid.vercel.app/images/domains.png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\domains.png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/easypaisa (1).png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\easypaisa (1).png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/fireside.jpg
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\fireside.jpg
+Content Type: image/jpeg
+
+Uri: https://payid.vercel.app/images/fruit1 (1).png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\fruit1 (1).png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/gcash (1).png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\gcash (1).png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/googleplaybadge.png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\googleplaybadge.png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/gpay (1).png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\gpay (1).png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/home.png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\home.png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/id.png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\id.png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/jazzcash.png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\jazzcash.png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/kyc.jpg
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\kyc.jpg
+Content Type: image/jpeg
+
+Uri: https://payid.vercel.app/images/launchpad.png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\launchpad.png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/mexc.png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\mexc.png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/mine.png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\mine.png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/minepi.png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\minepi.png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/minne.jpg
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\minne.jpg
+Content Type: image/jpeg
+
+Uri: https://payid.vercel.app/images/minu.png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\minu.png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/miny.png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\miny.png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/oke.png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\oke.png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/p3p.png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\p3p.png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/paypal.jpg
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\paypal.jpg
+Content Type: image/jpeg
+
+Uri: https://payid.vercel.app/images/pibrowser.png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\pibrowser.png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/piexchange.png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\piexchange.png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/pihead.png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\pihead.png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/pilogo.png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\pilogo.png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/pilogofooter.png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\pilogofooter.png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/piokx.png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\piokx.png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/pitogo.png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\pitogo.png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/profile.jpg
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\profile.jpg
+Content Type: image/jpeg
+
+Uri: https://payid.vercel.app/images/service.png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\service.png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/stake.png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\stake.png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/unlock.png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\unlock.png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/images/wall.jpg
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\wall.jpg
+Content Type: image/jpeg
+
+Uri: https://payid.vercel.app/images/wallet.jpg
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\wallet.jpg
+Content Type: image/jpeg
+
+Uri: https://payid.vercel.app/images/wallet.png
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\images\wallet.png
+Content Type: image/png
+
+Uri: https://payid.vercel.app/mine/
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\mine\mine
+Content Type: text/html
+
+Uri: https://payid.vercel.app/mine/payment/
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\mine\payment\payment
+Content Type: text/html
+
+Uri: https://payid.vercel.app/mine/validate/
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\mine\validate\validate
+Content Type: text/html
+
+Uri: https://payid.vercel.app/mine/wallet
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\mine\wallet-1
+Content Type: text/html
+
+Uri: https://payid.vercel.app/mine/wallet/
+File Name: C:\Users\user\Desktop\piteam\payid.vercel.app\mine\wallet\wallet
+Content Type: text/html
+

@@ -1,0 +1,511 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pi Browser</title>
+  <link href="../../fonts.css?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #783A8D;
+      --text: #783A8D;
+    }* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  color: #444;
+  padding-top: 60px;
+}
+
+header {
+  background: var(--primary);
+  color: white;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  height: 50px;
+}
+
+.back-btn {
+  font-size: 22px;
+  cursor: pointer;
+  color: #783A8D;
+}
+
+.header-right {
+  font-size: 22px;
+  cursor: pointer;
+  color: #783A8D;
+}
+
+.header-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.header-title img {
+  width: 80px;
+}
+
+main {
+  text-align: center;
+  padding: 25px 15px;
+  background-color: white;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-items: center;
+  align-items: center;
+  margin-bottom: 18px;
+  background-color: white;
+}
+
+.icon-link {
+  text-decoration: none;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-box {
+  background: #fff;
+  border: 1px solid var(--text);
+  border-radius: 12px;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.icon-box:hover {
+  transform: scale(1.05);
+  background-color: #f8f0fc;
+}
+
+.icon-box img {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+}
+
+.icon-label {
+  font-size: 13px;
+  text-align: center;
+  font-weight: 500;
+  margin-top: 6px;
+  max-width: 80px;
+  line-height: 1.2;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.button img {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+
+  .icon-box {
+    width: 60px;
+    height: 60px;
+  }
+
+  .icon-label {
+    font-size: 12px;
+  }
+}
+
+.top-bar {
+  background-color: #6b21a8;
+  color: white;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.content {
+  padding: 16px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 45px;
+  text-align: center;
+  color: black;
+}
+
+.card {
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+
+}
+
+.card-image {
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+
+.footer-note {
+  text-align: center;
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 26px;
+}
+
+  .footer-notes {
+  text-align: center;
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 70px;
+    margin-top: 20px;
+}
+
+.explore-link {
+  text-align: center;
+  font-weight: bold;
+  color: #6b21a8;
+  margin-bottom: 40px;
+}
+
+.bookmark-box {
+  background-color: #f3f4f7;
+  padding: 20px;
+  border-radius: 16px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.bookmark-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 38px;
+  color: black;
+  text-align: center;
+}
+
+.bookmark-text {
+  font-size: 14px;
+  color: black;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  border-top: 1px solid white;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+  .nav-item img {
+  width: 50px;
+  height: 50px;
+  display: block;
+  margin: 0 auto;
+}
+
+.nav-item {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 40px;
+  color: #555;
+  font-weight: bold;
+}
+
+.nav-item.active {
+  color: #6b21a8;
+}
+
+.toggle-arrow {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #6b21a8;
+  user-select: none;
+}
+
+#collapseContent {
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  max-height: 1500px;
+}
+
+#collapseContent.collapsed {
+  max-height: 0;
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="back-btn" onclick="history.back()">&#8592;</div>
+    <div class="header-title">
+      <img src="../../images/pihead.png" alt="Pi Icon">
+    </div>
+    <div class="header-right">&#9660;</div>
+  </header>
+  <div id="homeContent" class="tab-content" style="display: block;">
+    <div style="display: flex; justify-content: center; align-items: center;">
+      <img src="../../images/pibrowser.png" alt="Loading" width="85%" height="63px" style="margin-bottom: -50px;margin-top: 10px;align-items: center;">
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 16px 0 16px;">
+      <div onclick="toggleCollapse()" style="color: black; font-weight: bold; font-size: 16px;margin-top: 40px; margin-left: 20px;">Core Team Apps</div>
+      <div onclick="toggleCollapse()" id="toggleBtn" style="font-size: 27px; cursor: pointer; color: #6b21a8; display: flex; align-items: center;margin-top: 58px; margin-right: 25px;">&#x2303;</div>
+    </div>
+
+<div id="collapseContent" style="display: block; margin-top: 10px; background: #f3f4f6; border-radius: 12px;">
+  <main>
+    <div class="grid">
+      <a href="../wallet/wallet.html" class="icon-link">
+        <div class="icon-box"><img src="../../images/fireside.jpg" alt="Fireside"></div>
+        <div class="icon-label">Fireside</div>
+      </a>
+      <a href="../wallet/wallet.html" class="icon-link">
+        <div class="icon-box"><img src="../../images/wallet.jpg" alt="Wallet"></div>
+        <div class="icon-label">Wallet</div>
+      </a>
+      <a href="../wallet/wallet.html" class="icon-link">
+        <div class="icon-box"><img src="../../images/brain.jpg" alt="Brainstorm"></div>
+        <div class="icon-label">Brainstorm</div>
+      </a>
+      <a href="../wallet/wallet.html" class="icon-link">
+        <div class="icon-box"><img src="../../images/minne.jpg" alt="Mine"></div>
+        <div class="icon-label">Mine</div>
+      </a>
+      <a href="../wallet/wallet.html" class="icon-link">
+        <div class="icon-box"><img src="../../images/block.jpg" alt="Blockchain"></div>
+        <div class="icon-label">Blockchain</div>
+      </a>
+      <a href="../wallet/wallet.html" class="icon-link">
+        <div class="icon-box"><img src="../../images/develop.jpg" alt="Develop"></div>
+        <div class="icon-label">Develop</div>
+      </a>
+      <a href="../wallet/wallet.html" class="icon-link">
+        <div class="icon-box"><img src="../../images/kyc.jpg" alt="KYC"></div>
+        <div class="icon-label">KYC</div>
+      </a>
+      <a href="../wallet/wallet.html" class="icon-link">
+        <div class="icon-box"><img src="../../images/chats.jpg" alt="Chat"></div>
+        <div class="icon-label">Chat</div>
+      </a>
+      <a href="../wallet/wallet.html" class="icon-link">
+        <div class="icon-box"><img src="../../images/profile.jpg" alt="Profile"></div>
+        <div class="icon-label">Profile</div>
+      </a>
+      <a href="../wallet/wallet.html" class="icon-link">
+        <div class="icon-box"><img src="../../images/domains.png" alt="Domains"></div>
+        <div class="icon-label">Domains</div>
+      </a>
+      <a href="../wallet/wallet.html" class="icon-link">
+        <div class="icon-box"><img src="../../images/unlock.png" alt="App Studio"></div>
+        <div class="icon-label">App Studio</div>
+      </a>
+      <a href="../wallet/wallet.html" class="icon-link">
+        <div class="icon-box"><img src="../../images/launchpad.png" alt="App Studio"></div>
+        <div class="icon-label">Launchpad</div>
+      </a>
+      <a href="../payment/payment.html" class="icon-link">
+        <div class="icon-box"><img src="../../images/id.png" alt="pay id"></div>
+        <div class="icon-label">Pay ID</div>
+      </a>
+    </div>
+  </main>
+</div>
+
+<div class="content">
+  <div class="section-title">Explore Third-Party Apps</div>
+
+  <div class="card">
+    <div style="position: relative;">
+      <img src="../../images/pitogo.png" class="card-image" alt="Pi Network Globe">
+    </div>
+  </div>
+
+  <div class="card">
+    <div style="position: cover;">
+      <img src="../../images/oke.png" class="card-image" alt="Pi Network Globe">
+    </div>
+  </div>
+
+  <div class="footer-note">This data is updated every 15 minutes<br>Last refreshed at: Jul 1 3:33 AM</div>
+  <div class="explore-link">Explore More</div>
+
+  <div class="bookmark-title">Bookmarked Apps</div>
+  <div class="bookmark-box">
+    <div class="bookmark-text">
+      <p>You have not bookmarked any apps, explore <br>the ecosystem and bookmark your favorite <br>apps in their app details page.</p>
+    </div>
+  </div>
+
+  <h5 style="text-align: center;margin-bottom: 90px;">Manage Account</h5>
+</div>
+</div>
+  <div id="appsContent" class="tab-content" style="display: none;">
+    <div class="content">
+  <div class="section-title">Explore Third-Party Apps</div>
+      <p style="text-align: center; font-size: 14px; margin-top: -35px;">Explore Third Party Services Connected to Pi.</p>
+      <a href="../wallet/wallet.html"><p style="color: #783A8D; text-align: center; font-size: 12px;margin-top: 20px; margin-bottom: 20px;"><b>Learn about the new App Ranking method</b></p></a>
+  <div class="card">
+    <div style="position: relative;">
+      <img src="../../images/category.png" class="card-image" alt="Pi Network Globe">
+    </div>
+  </div>
+
+  <div>
+    <div style="position: cover;">
+      <img src="../../images/stake.png" class="card-image" alt="Pi Network Globe" style="width: 105%;">
+    </div>
+  </div>
+  <pre style="font-size: 15px;"><b>Top Staked Apps</b></pre>
+      <pre style="text-align: right; margin-top: -27px; color: #783A8D;">Ranking</pre>
+
+      <div class="card" style="margin-top: 35px;">
+    <div style="position: relative;">
+      <img src="../../images/fruit1%20%281%29.png" class="card-image" alt="Pi Network Globe">
+    </div>
+  </div>
+
+      <div class="footer-note">This data is updated every 15 minutes<br>Last refreshed at: Jul 1 3:33 AM</div>
+
+     <pre style="font-size: 15px;"><b>Top Staked Services</b></pre>
+      <div style="margin-top: 35px;">
+    <div style="position: relative;">
+      <img src="../../images/mexc.png" class="card-image" alt="Pi Network Globe">
+    </div>
+  </div>
+
+      <div class="footer-notes">This data is updated every 15 minutes<br>Last refreshed at: Jul 1 3:33 AM</div>
+</div>
+  </div>
+  <div id="serviceContent" class="tab-content" style="display: none;">
+<div class="content">
+  <div class="section-title">Explore Services</div>
+      <p style="text-align: center; font-size: 14px; margin-top: -35px;">Explore Third Party Services Connected to Pi.</p>
+  <div class="card">
+    <div style="position: relative;">
+    </div>
+  </div>
+
+  <pre style="font-size: 15px;"><b>Exchanges</b></pre>
+      <pre style="text-align: right; margin-top: -27px; color: #783A8D;">What's This</pre>
+
+      <div class="cad" style="margin-top: 35px;">
+    <div style="position: relative;">
+      <img src="../../images/piexchange.png" class="card-image" alt="Pi Network Globe">
+    </div>
+  </div>
+
+
+     <pre style="font-size: 15px;"><b>Web3 Wallets</b></pre>
+      <div style="margin-top: 35px;">
+    <div style="position: relative;">
+      <img src="../../images/piokx.png" class="card-image" alt="Pi Network Globe">
+    </div>
+  </div>
+
+  <pre style="font-size: 15px;"><b>Bridges</b></pre>
+      <pre style="text-align: right; margin-top: -27px; color: #783A8D;">What's This</pre>
+
+      <div class="card" style="margin-top: 35px;">
+    <div style="position: relative;">
+      <img src="../../images/bridge.png" class="card-image" alt="Pi Network Globe">
+    </div>
+  </div>
+
+      <div class="footer-notes"></div>
+</div>
+  </div>
+  <div class="bottom-nav">
+    <div class="nav-item active" data-target="homeContent" onclick="switchTab(this)">
+      <img src="../../images/home.png">
+    </div>
+    <div class="nav-item" data-target="appsContent" onclick="switchTab(this)">
+      <img src="../../images/apps.png">
+    </div>
+    <div class="nav-item" data-target="serviceContent" onclick="switchTab(this)">
+      <img src="../../images/service.png">
+    </div>
+  </div>
+  <script>
+    let expanded = true;
+
+    function toggleCollapse() {
+      const content = document.getElementById('collapseContent');
+      const toggleBtn = document.getElementById('toggleBtn');
+      expanded = !expanded;
+      content.classList.toggle('collapsed', !expanded);
+      toggleBtn.innerHTML = expanded ? '&#x2303;' : '&#x2304;';
+    }
+
+    function switchTab(clickedItem) {
+      const targetId = clickedItem.getAttribute('data-target');
+
+      document.querySelectorAll('.bottom-nav .nav-item').forEach(item => {
+        item.classList.remove('active');
+      });
+      clickedItem.classList.add('active');
+
+      document.querySelectorAll('.tab-content').forEach(section => {
+        section.style.display = 'none';
+      });
+
+      const targetContent = document.getElementById(targetId);
+      if (targetContent) {
+        targetContent.style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>

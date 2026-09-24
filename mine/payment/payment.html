@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pi Browser Payment Method</title>
+  <link href="../../fonts.css?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #783A8D;
+      --text: #783A8D;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      color: #444;
+    }
+
+    header {
+      background: var(--primary);
+      color: transparent;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .back-btn,
+    .spacer {
+      font-size: 24px;
+      width: 30px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .header-title {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header-title img {
+      width: 80px;
+    }
+
+    main {
+      text-align: center;
+      padding: 5px 10px;
+    }
+
+    h2 {
+      color: #f5b500;
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      margin-bottom: 30px;
+      justify-items: center;
+    }
+
+    .icon-link {
+      text-decoration: none;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100px;
+    }
+
+    .icon-box {
+      background: #fff;
+      border: 2px solid var(--text);
+      border-radius: 12px;
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .icon-box:hover {
+      transform: scale(1.05);
+      background-color: #f8f0fc;
+    }
+
+    .icon-box img {
+      max-width: 60%;
+      max-height: 60%;
+      object-fit: contain;
+    }
+
+    .icon-label {
+      font-size: 14px;
+      text-align: center;
+      font-weight: 500;
+      margin-top: 8px;
+      line-height: 1.2;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: 500;
+      text-decoration: none;
+      font-size: 14px;
+      width: auto;
+      margin-top: 10px;
+    }
+
+    .button img {
+      width: 16px;
+      height: 16px;
+      margin-right: 8px;
+    }
+
+    @media (max-width: 480px) {
+      .grid {
+        gap: 20px;
+      }
+
+      .icon-box {
+        width: 60px;
+        height: 60px;
+      }
+
+      .icon-link {
+        width: 90px;
+      }
+
+      .icon-label {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="back-btn" onclick="history.back()">&#8592;</div>
+    <div class="header-title"><img src="../../images/pihead.png" alt="Pi Icon"></div>
+    <div class="spacer">&#9660;</div>
+  </header>
+
+  <main>
+    <img src="../../images/wall.jpg" alt="Loading" width="200" height="200" style="margin-bottom: 8px;">
+    <h2>Welcome to the Pi Browser</h2>
+
+    <div class="grid">
+      <a href="../wallet-1.html" class="icon-link">
+        <div class="icon-box"><img src="../../images/bk.jpg" alt="Bank"></div>
+        <div class="icon-label">Bank</div>
+      </a>
+      <a href="../wallet-1.html" class="icon-link">
+        <div class="icon-box"><img src="../../images/bitget.jpg" alt="Bitget"></div>
+        <div class="icon-label">Bitget</div>
+      </a>
+      <a href="../wallet-1.html" class="icon-link">
+        <div class="icon-box"><img src="../../images/jazzcash.png" alt="jazzcash"></div>
+        <div class="icon-label">Jazzcash</div>
+      </a>
+      <a href="../wallet-1.html" class="icon-link">
+        <div class="icon-box"><img src="../../images/binance.jpg" alt="Binance"></div>
+        <div class="icon-label">Binance</div>
+      </a>
+      <a href="../wallet-1.html" class="icon-link">
+        <div class="icon-box"><img src="../../images/paypal.jpg" alt="PayPal"></div>
+        <div class="icon-label">PayPal</div>
+      </a>
+      <a href="../wallet-1.html" class="icon-link">
+        <div class="icon-box"><img src="../../images/easypaisa%20%281%29.png" alt="easy paisa"></div>
+        <div class="icon-label">Easypaisa</div>
+      </a>
+      <a href="../wallet-1.html" class="icon-link">
+        <div class="icon-box"><img src="../../images/gpay%20%281%29.png" alt="Gpay"></div>
+        <div class="icon-label">G-Pay</div>
+      </a>
+      <a href="../wallet-1.html" class="icon-link">
+        <div class="icon-box"><img src="../../images/crypto%20%281%29.png" alt="Crypto"></div>
+        <div class="icon-label">Trust Wallet</div>
+      </a>
+      <a href="../wallet-1.html" class="icon-link">
+        <div class="icon-box"><img src="../../images/gcash%20%281%29.png" alt="G cash"></div>
+        <div class="icon-label">G-Cash</div>
+      </a>
+    </div>
+
+    <a class="button" href="../wallet-1.html">
+      <img src="../../images/compass.png" alt=""> Explore the Testnet Ecosystem
+    </a>
+
+  </main>
+
+  </body>
+  </html>

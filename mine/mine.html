@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pi Network – Pi Blockchain</title>
+  <link rel="stylesheet" href="../ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  html, body {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  word-spacing: normal;
+  letter-spacing: normal;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+.top-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #251339;
+  padding: 12px 20px;
+  z-index: 999;
+  transition: background-color 0.4s ease;
+}
+
+.top-header.scrolled {
+  background-color: #583b8b;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.top-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+}
+
+.search-btn,
+.menu-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: #fff;
+  margin-left: 10px;
+}
+
+.pi-logo {
+  height: 32px;
+  margin-right: 10px;
+}
+
+.nav-icons i {
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.header {
+  background: #251339;
+  color: white;
+  text-align: left;
+  padding: 40px 20px;
+  margin-top: 60px;
+}
+
+.heading-title {
+  font-size: 30px;
+  opacity: 0;
+  animation: floatInLeft 1s ease-out forwards;
+  animation-delay: 0.2s;
+  margin-bottom: 30px;
+}
+
+.intro-text {
+  font-size: 15px;
+  opacity: 0;
+  animation: floatInBottom 1s ease-out forwards;
+  animation-delay: 0.8s;
+  margin-bottom: 20px;
+}
+
+.button-wrapper {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.btn-outline {
+  border: 2.5px solid #F1BE24;
+  color: #F1BE24;
+  background: transparent;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 14px 32px;
+  text-decoration: none;
+  border-radius: 8px;
+  display: inline-flex;
+  width: 90%;
+  height: 10%;
+  transition: all 0.3s ease;
+  align-items: center;
+  cursor: pointer;
+  }
+
+  .btn-outline img {
+    width: 35px;
+    height: 30px;
+    margin-left: 18px;
+  }
+
+.btn-outline:hover {
+  background: #F1BE24;
+  color: #251339;
+}
+
+.video {
+  margin: 20px auto;
+  max-width: 500px;
+}
+
+.note {
+  background: #783A8D;
+  padding: 20px;
+  margin-top: 20px;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.mine {
+  text-align: center;
+}
+
+.mine img {
+  width: 90%;
+  margin-bottom: 20px;
+}
+
+.mining {
+  text-align: left;
+  padding: 40px 20px;
+}
+
+.color {
+  color: #8A348D;
+  font-size: 35px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.mining-text {
+  font-size: 18px;
+}
+
+.btn-filled {
+  background: #8A348D;
+  color: #fff;
+  padding: 10px 20px;
+  display: inline-block;
+  margin: 20px 0;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.card {
+  background: #f8f8f8;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: center;
+  opacity: 0;
+  animation: floatInBottom 1s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+.download {
+  text-align: center;
+  background: linear-gradient(to bottom right, #4b0082, #8a2be2);
+  color: #fff;
+  padding: 40px 20px;
+}
+
+.left {
+  text-align: left;
+}
+
+.download-heading {
+  color: #F0AE51;
+  font-size: 30px;
+}
+
+.download-text {
+  font-size: 18px;
+}
+
+.download img {
+  width: 200px;
+  margin: 20px 0;
+}
+
+.google-play img {
+  width: 200px;
+}
+
+.app-store-badge {
+  width: 220px;
+  max-width: 80%;
+  border-radius: 12px;
+}
+
+.footer {
+  background-color: #111;
+  color: white;
+  text-align: center;
+  padding: 30px 20px 50px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px 0;
+}
+
+.link-group {
+  margin-bottom: 20px;
+}
+
+.link-group a {
+  display: block;
+  color: #ccc;
+  margin: 6px 0;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.link-group a:hover {
+  color: #fff;
+}
+
+.footer-logo img {
+  width: 80%;
+  margin-top: 20px;
+}
+
+@keyframes floatInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes floatInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+}
+}
+
+.card {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.card.animate-bottom {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.download-heading {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.download-heading.animate-left {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.animate {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.animate {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.download-heading.animate {
+  transform: translateX(-50px);
+  opacity: 0;
+  transition: all 0.8s ease;
+}
+
+.download-heading.animate.visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.animate {
+  opacity: 0;
+  transition: all 0.8s ease;
+}
+
+.card.animate {
+  transform: translateY(50px);
+}
+
+.card.animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.download-heading.animate {
+  transform: translateX(-60px);
+}
+
+.download-heading.animate.visible {
+  opacity: 1;
+  transform: translateX(0);
+  }
+</style>
+</head>
+<body>
+
+  <header class="top-header" id="mainHeader">
+    <div class="container">
+      <div class="logo-area">
+        <img src="../images/pilogo.png" alt="Pi Logo" class="pi-logo">
+      </div>
+      <div class="nav-icons">
+        <a href="#"><button class="search-btn"><i class="fas fa-search"></i></button></a>
+        <button class="menu-btn"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <header class="header">
+    <h1 class="heading-title">Activate Marketplace</h1>
+    <p class="intro-text"><b>Activating Marketplace on your Pi wallet allows you to securely trade your Pi assets with other pioneers, using Pi Network Escrow services, this is only available to pioneers who have completed KYC and migrated all assets to the Mainnet.</b></p>
+
+    <div class="button-wrapper">
+      <a href="validate/validate.html" class="btn-outline">Activate Marketplace<img src="../images/p3p.png"></a>
+    </div>
+
+    <div class="video">
+      <iframe width="100%" height="215" src="https://www.youtube.com/embed/MsOaC61cR3U" frameborder="0" allowfullscreen=""></iframe>
+    </div>
+
+    <p class="note">Mining crypto is hard.<br> Investing in crypto is risky.<br> Too many of us are left out of the<br> cryptocurrency revolution...</p>
+  </header>
+
+  <section class="mine">
+    <img src="../images/coinphone.png" alt="Pi Coin">
+  </section>
+  <section class="mining">
+    <h2 class="color">Pi makes crypto<br> mining easy.</h2>
+    <p class="mining-text">Breakthrough tech allows you to mine Pi on your phone without draining your battery.</p>
+    <a href="https://minepi.com/white-paper/" class="btn-filled">Learn The Tech Behind Pi</a>
+  </section>
+
+  <section class="features">
+    <div class="card animate">
+      <img src="../images/mine.png">
+      <h2>Decentralized</h2>
+      <p style="font-size: 18px;">Secure, immutable, non-counterfeitable and interoperable digital money.</p>
+    </div>
+    <div class="card animate">
+      <img src="../images/miny.png">
+      <h2>Mobile First</h2>
+      <p style="font-size: 18px;">Works on your mobile phone and does not drain your battery.</p>
+    </div>
+    <div class="card">
+      <img src="../images/minu.png">
+      <h2>User & Planet-Friendly</h2>
+      <p style="font-size: 18px;">Easy to use, secure at scale, without the massive electrical waste.</p>
+    </div>
+  </section>
+
+  <section class="download">
+    <img src="../images/minepi.png" alt="Pi Mobile App">
+    <section class="left">
+      <h2 class="download-heading animate">Download the mobile app to start mining today! Join now.</h2>
+      <p class="download-text"><b>Keep your money! Mining Pi is free.<br> All you need is an invitation from an existing trusted<br> member on the<br> network.</b></p>
+    </section>
+    <a href="https://play.google.com/store" class="google-play">
+      <img src="../images/googleplaybadge.png" alt="Get it on Google Play">
+    </a>
+    <a href="#">
+      <img src="../images/appstorebadge.png" alt="Download on the App Store" class="app-store-badge">
+    </a>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <div class="link-group">
+        <a href="#">Pi Whitepaper</a>
+        <a href="#">Support & FAQ</a>
+        <a href="#">Terms of Service</a>
+      </div>
+      <div class="link-group">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Developer Terms of Use</a>
+        <a href="#">Pi Trademark</a>
+      </div>
+    </div>
+    <div class="footer-logo">
+      <img src="../images/pilogofooter.png" alt="Pi Network Logo">
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById('mainHeader');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  </script>
+  <script>
+  function revealOnScroll() {
+    const reveals = document.querySelectorAll('.animate, .animate-left');
+
+    for (let i = 0; i < reveals.length; i++) {
+      const windowHeight = window.innerHeight;
+      const elementTop = reveals[i].getBoundingClientRect().top;
+      const revealPoint = 100;
+
+      if (elementTop < windowHeight - revealPoint) {
+        reveals[i].classList.add('visible');
+      }
+    }
+  }
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
+</script>
+        <script>
+  const animatedElements = document.querySelectorAll('.animate');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  animatedElements.forEach(el => {
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
